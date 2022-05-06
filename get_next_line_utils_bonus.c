@@ -6,7 +6,7 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:25:56 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/05/05 13:58:55 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/05/06 13:17:29 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ size_t	gn_strlen(char *s)
 {
 	size_t	i;
 
-	i = 0;
 	if (!s)
 		return (0);
+	i = 0;
 	while (s[i] != '\0')
 		i++;
 	return (i);
@@ -52,6 +52,21 @@ int	gn_find_nl(char *str)
 	Frees the old and returns a new buf (join).
 */
 
+void	gn_free_buf(char **buf)
+{
+	free(*buf);
+	*buf = NULL;
+}
+
+char	*gn_set_buf(char *buf)
+{
+	buf = malloc(sizeof(char) * 1);
+	if (!buf)
+		return (NULL);
+	buf[0] = '\0';
+	return (buf);
+}
+
 char	*gn_strjoin(char *buf, char *tmp)
 {
 	int		i;
@@ -59,10 +74,7 @@ char	*gn_strjoin(char *buf, char *tmp)
 	char	*join;
 
 	if (!buf)
-	{
-		buf = (char *)malloc(1 * sizeof(char));
-		buf[0] = '\0';
-	}
+		buf = gn_set_buf(buf);
 	join = malloc(sizeof(char) * ((gn_strlen(buf) + gn_strlen(tmp)) + 1));
 	if (!join)
 		return (NULL);
@@ -76,6 +88,6 @@ char	*gn_strjoin(char *buf, char *tmp)
 	while (tmp[j] != '\0')
 		join[i++] = tmp[j++];
 	join[i] = '\0';
-	free(buf);
+	gn_free_buf(&buf);
 	return (join);
 }

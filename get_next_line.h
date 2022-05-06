@@ -6,7 +6,7 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 16:10:54 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/05/05 15:07:10 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/05/06 12:49:47 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ char	*gn_strjoin(char *buf, char *tmp);
 char	*gn_read_to_buf(int fd, char *buf);
 char	*gn_extract_line(char *buf);
 char	*gn_calc_rest(char *buf);
+char	*gn_set_buf(char *buf);
+void	gn_free_buf(char **buf);
 
 #endif

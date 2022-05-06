@@ -6,7 +6,7 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 16:10:54 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/05/05 15:06:55 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/05/06 13:18:54 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE  2147483646
+#  define BUFFER_SIZE 2147483646
 # endif
 
 char	*get_next_line(int fd);
@@ -35,5 +35,7 @@ char	*gn_strjoin(char *buf, char *tmp);
 char	*gn_read_to_buf(int fd, char *buf);
 char	*gn_extract_line(char *buf);
 char	*gn_calc_rest(char *buf);
+char	*gn_set_buf(char *buf);
+void	gn_free_buf(char **buf);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rmazurit <rmazurit@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 16:20:36 by rmazurit          #+#    #+#             */
-/*   Updated: 2022/05/05 14:55:24 by rmazurit         ###   ########.fr       */
+/*   Updated: 2022/05/06 12:57:21 by rmazurit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ char	*get_next_line(int fd)
 	if (read(fd, NULL, 0) < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buf = gn_read_to_buf(fd, buf);
+	if (!buf)
+		return (NULL);
 	if (buf[0] == '\0')
 	{
-		free(buf);
-		buf = NULL;
+		gn_free_buf(&buf);
 		return (NULL);
 	}
 	line = gn_extract_line(buf);
@@ -72,13 +73,14 @@ char	*gn_read_to_buf(int fd, char *buf)
 			read_again = 0;
 	}
 	free(tmp);
+	tmp = NULL;
 	return (buf);
 }
 
 /*
 	Go through the buf and search for \n or \0
 	Depending on the search result - allocate the needed amount of memory
-	Then copy the content from buf until the \n or \0 int a new line
+	Then copy the content from buf until the \n or \0 into a new line
 	Return the new line
 */
 char	*gn_extract_line(char *buf)
@@ -94,7 +96,7 @@ char	*gn_extract_line(char *buf)
 		i++;
 	if (buf[i] == '\n')
 		line = malloc(sizeof(char) * (i + 2));
-	else
+	else if (buf[i] == '\0')
 		line = malloc(sizeof(char) * (i + 1));
 	if (!line)
 		return (NULL);
@@ -111,10 +113,10 @@ char	*gn_extract_line(char *buf)
 }
 
 /*
-	Calculate the rest of the buf, which wasn't extracted into the line
+	Calculate the rest of the buf, which wasn't extracted into the line:
 	Reallocate memory starting from the first occurence of \n until \0
 	Copy the sequence from buf into the new memory storage (rest)
-	Free the old buf
+	Free the old buf and return the new.
 */
 char	*gn_calc_rest(char *buf)
 {
@@ -122,12 +124,14 @@ char	*gn_calc_rest(char *buf)
 	int		i;
 	int		j;
 
+	if (!buf)
+		return (NULL);
 	i = 0;
 	while (buf[i] != '\0' && buf[i] != '\n')
 		i++;
 	if (buf[i] == '\0')
 	{
-		free(buf);
+		gn_free_buf(&buf);
 		return (NULL);
 	}
 	rest = malloc(sizeof(char) * ((gn_strlen(buf) - i) + 1));
@@ -138,6 +142,6 @@ char	*gn_calc_rest(char *buf)
 	while (buf[i] != '\0')
 		rest[j++] = buf[i++];
 	rest[j] = '\0';
-	free(buf);
+	gn_free_buf(&buf);
 	return (rest);
 }
