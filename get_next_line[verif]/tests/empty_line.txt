@@ -1,0 +1,5 @@
+Let's check for errors
+One more line
+
+After an empty line
+Last line
