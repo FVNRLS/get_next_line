@@ -11,12 +11,12 @@ The bonus part is doing basically the same, but in addition it allows to read fr
 
 **Getting Started**
 
-compile following .c files to use the mandatory version and include the get_next_line.h header:
+compile following .c files to use the mandatory version and, including get_next_line.h:
 
 `gcc get_next_line.c get_next_line_utils.c
 `
 
-compile following .c files to run the bonus version and include get_next_line_bonus.h:
+compile following .c files to run the bonus version, including get_next_line_bonus.h:
 
 `gcc get_next_line_bonus.c get_next_line_utils_bonus.c
 `
