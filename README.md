@@ -11,7 +11,7 @@ The bonus part is doing basically the same, but in addition it allows to read fr
 
 **Getting Started**
 
-compile following .c files to use the mandatory version and, including get_next_line.h:
+compile following .c files to use the mandatory version, including get_next_line.h:
 
 `gcc get_next_line.c get_next_line_utils.c
 `
