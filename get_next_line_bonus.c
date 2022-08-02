@@ -21,12 +21,11 @@
 		extract (until \n or \0) and return the line, including \n and \0
 			--> malloc depends on situation, whether \n was found or not
 			--> if \n was found, then allocate 2 bytes more (for \n and \0)
-		realloc the static buffer to store the rest (without extracted line)
+		reallocate the static buffer to store the rest (without extracted line)
 		join the next read result to it!
 	BONUS PART:
 	The static buf is declared as array wit max. possible nbr of fd (1024)
 	which can be open per process.
-	URL: shorturl.at/bjqvF
  */
 char	*get_next_line(int fd)
 {

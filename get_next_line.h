@@ -13,7 +13,7 @@
 /* 
 	The limit of the total BUFFER_SIZE is 2147483647 (SIZE_MAX).
 	In read() man page the function is defined with SSIZE_MAX 
-	  --> limit depends on the OS. E.g. on mac it would be 64-bit-architecture
+	  --> limit depends on the OS. E.g. on Mac it would be 64-bit-architecture
 	  with SIZE_MAX of 4294967295.
 	In my case the func. gn_read_to_buf() allocates memory of BUFFER_SIZE + 1
 	--> the max. allocatable heap memory is (SIZE_MAX / 2) --> 2147483647
