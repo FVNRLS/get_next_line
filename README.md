@@ -21,6 +21,15 @@ compile following .c files to run the bonus version, including get_next_line_bon
 `gcc get_next_line_bonus.c get_next_line_utils_bonus.c
 `
 
+to create a mandatory library:
+
+`make all`
+
+to create a bonus library:
+
+`make bonus
+`
+
 <br>
 
 **Prerequisites**
