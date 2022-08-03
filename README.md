@@ -34,7 +34,7 @@ to create a bonus library:
 
 **Prerequisites**
 
-Installed C-Compiler like gcc, cc or clang.
+Installed C compiler like gcc, cc or clang.
 
 <br>
 
