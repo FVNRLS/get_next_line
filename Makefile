@@ -10,23 +10,23 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		= 		get_next_line.a
-BONUS_NAME 	= 		get_next_line_bonus.a
+NAME 		= 	get_next_line.a
+BONUS_NAME 	= 	get_next_line_bonus.a
 
 
-CC 			= 		cc
+CC 		= 	cc
 
-FLAGS		= 		-Wall -Wextra -Werror
+FLAGS		= 	-Wall -Wextra -Werror
 
-SRC 		= 		get_next_line.c							\
-                    get_next_line_utils.c					\
+SRC 		= 	get_next_line.c			\
+                   	get_next_line_utils.c		\
 
-BONUS_SRC	=		get_next_line_bonus.c					\
-					get_next_line_utils_bonus.c				\
+BONUS_SRC	=	get_next_line_bonus.c		\
+			get_next_line_utils_bonus.c	\
 
-OBJ 		= 		${SRC:.c=.o}
+OBJ 		= 	${SRC:.c=.o}
 
-BONUS_OBJ	=		${BONUS_SRC:.c=.o}
+BONUS_OBJ	=	${BONUS_SRC:.c=.o}
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -c $(SRC)
